@@ -11,13 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Mainù">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivityRegistrazione"
+            android:label="@string/title_activity_main_registrazione"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SchermatadiBenvenuto"></activity>
     </application>
 
 </manifest>

@@ -22,7 +22,10 @@
     <string name="cancel">C</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-
+    <string name="login_error">Login Error</string>
+    <string name="login_success">Login Success</string>
+    <string name="title_activity_main_registrazione">MainActivityRegistrazione</string>
+    <string name="benvenuto">Benvenuto</string>
 
 
 </resources>
