@@ -22,7 +22,15 @@
             android:name=".MainActivityRegistrazione"
             android:label="@string/title_activity_main_registrazione"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SchermatadiBenvenuto"></activity>
+        <activity android:name=".SchermatadiBenvenuto">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"></action>
+                <action android:name="android.intent.action.SENDTO"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:scheme="mail"></data>
+                <data android:scheme="mailto"></data>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

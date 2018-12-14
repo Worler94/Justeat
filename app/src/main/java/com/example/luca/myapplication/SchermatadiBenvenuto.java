@@ -3,11 +3,12 @@ package com.example.luca.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     TextView text;
     Switch s;
@@ -29,6 +30,8 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
 
         s.setOnCheckedChangeListener(this);
 
+        text.setOnClickListener(this);
+
     }
         @Override
         public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
@@ -38,5 +41,15 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
                 s.getRootView().setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
             }
         }
+
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{
+                text.getText().toString()});
+        i.setType("message/rfc822");
+        startActivity(i);
     }
+}
+
 
