@@ -9,13 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/email_Et"
+        android:drawableStart="@drawable/baseline_mail_24"
         android:inputType="textEmailAddress"
-        android:hint="ciao@io.it" />
+    android:hint="ciao@io.it" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/password_Et"
+        android:drawableStart="@drawable/baseline_vpn_key_24"
         android:inputType="textPassword"
         android:text="cbajbfja"/>
 

@@ -1,6 +1,8 @@
 package com.example.luca.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,8 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
 
     TextView text;
     Switch s;
+    SharedPreferences share;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +34,25 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
 
         s.setOnCheckedChangeListener(this);
 
+        share = getPreferences(Context.MODE_PRIVATE);
+        editor = share.edit();
+
         text.setOnClickListener(this);
+
+        s.setChecked(getColorValue());
 
     }
         @Override
         public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
-            if (isChecked) {
-                s.getRootView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
-            } else {
-                s.getRootView().setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-            }
+            s.getRootView().setBackgroundColor(isChecked ? getResources().getColor(R.color.colorAccent) : getResources().getColor(R.color.colorPrimaryDark));
+            setColorValue(isChecked);
+        }
+        public void setColorValue(boolean value){
+            editor.putBoolean("BGcolor", value);
+            editor.commit();
+        }
+        private boolean getColorValue(){
+            return share.getBoolean("BGcolor", false);
         }
 
     @Override
