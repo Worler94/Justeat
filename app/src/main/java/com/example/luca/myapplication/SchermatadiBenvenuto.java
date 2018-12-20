@@ -31,16 +31,16 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
         setContentView(R.layout.schermatadibenvenuto);
 
         plus1 = findViewById(R.id.plus1);
-        plus2 = findViewById(R.id.plus2);
-        plus3 = findViewById(R.id.plus3);
+        /*plus2 = findViewById(R.id.plus2);
+        plus3 = findViewById(R.id.plus3);*/
         minus1 = findViewById(R.id.minus1);
-        minus2 = findViewById(R.id.minus2);
-        minus3 = findViewById(R.id.minus3);
+       /* minus2 = findViewById(R.id.minus2);
+        minus3 = findViewById(R.id.minus3);*/
         buy = findViewById(R.id.buy);
         euro = findViewById(R.id.euro);
         num1 = findViewById(R.id.num1);
-        num2 = findViewById(R.id.num2);
-        num3 = findViewById(R.id.num3);
+        /*num2 = findViewById(R.id.num2);
+        num3 = findViewById(R.id.num3);*/
 
         text = findViewById(R.id.benvenuto);
 
