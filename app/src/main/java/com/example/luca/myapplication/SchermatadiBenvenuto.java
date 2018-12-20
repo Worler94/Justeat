@@ -5,24 +5,44 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
+    Button plus1, plus2, plus3, minus1, minus2, minus3, buy, euro;
+    TextView num1, num2, num3;
     TextView text;
     Switch s;
     SharedPreferences share;
     SharedPreferences.Editor editor;
+    double total;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schermatadibenvenuto);
 
-        text = findViewById(R.id.benveuto);
+        plus1 = findViewById(R.id.plus1);
+        plus2 = findViewById(R.id.plus2);
+        plus3 = findViewById(R.id.plus3);
+        minus1 = findViewById(R.id.minus1);
+        minus2 = findViewById(R.id.minus2);
+        minus3 = findViewById(R.id.minus3);
+        buy = findViewById(R.id.buy);
+        euro = findViewById(R.id.euro);
+        num1 = findViewById(R.id.num1);
+        num2 = findViewById(R.id.num2);
+        num3 = findViewById(R.id.num3);
+
+        text = findViewById(R.id.benvenuto);
 
         Intent i = getIntent();
 
@@ -41,6 +61,9 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
 
         s.setChecked(getColorValue());
 
+        recyclerView = findViewById(R.id.recycleView);
+        adapter = new RowAdapter();
+
     }
         @Override
         public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
@@ -54,6 +77,34 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
         private boolean getColorValue(){
             return share.getBoolean("BGcolor", false);
         }
+
+        public void setPlus1(int btn){
+            plus1.setInputType(1);
+        }
+        public int getPlus1(){
+            return plus1.getInputType();
+        }
+        public int num1(){
+            return getPlus1();
+        }
+        public void setPlus2(int btn){
+            plus2.setInputType(1);
+        }
+        public int getPlus2(){
+            return plus2.getInputType();
+    }
+        public int num2(){
+            return getPlus2();
+    }
+        public void setPlus3(int btn){
+            plus1.setInputType(1);
+    }
+        public int getPlus3(){
+            return plus1.getInputType();
+    }
+        public int num3(){
+            return getPlus3();
+    }
 
     @Override
     public void onClick(View v) {

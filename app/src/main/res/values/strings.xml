@@ -26,6 +26,13 @@
     <string name="login_success">Login Success</string>
     <string name="title_activity_main_registrazione">MainActivityRegistrazione</string>
     <string name="benvenuto">Benvenuto</string>
+    <string name="milk">Milk</string>
+    <string name="bread">Bread</string>
+    <string name="tea">Tea</string>
+    <string name="total">Total</string>
+    <string name="buy">Buy</string>
+    <string name="num1">0</string>
+    <string name="euro">Euro</string>
 
 
 </resources>
