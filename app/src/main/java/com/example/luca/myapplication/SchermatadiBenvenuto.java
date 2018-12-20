@@ -1,5 +1,6 @@
 package com.example.luca.myapplication;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,13 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
@@ -24,6 +32,8 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
 
+    private String result;
+    //JSONObject jObject = new JSONObject(result);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +72,31 @@ public class SchermatadiBenvenuto extends AppCompatActivity implements CompoundB
         s.setChecked(getColorValue());
 
         recyclerView = findViewById(R.id.recycleView);
-        adapter = new RowAdapter();
+        ArrayList<Food> data = new ArrayList<>();
+        adapter = new RowAdapter(this, data);
 
+
+
+    }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>()){
+        @Override
+        public void OnResponse(String response){
+            log.d("Success", response);
+            try{
+                JSONArray responseJSON = new JSONArray(response);
+                ArrayList<Food> foodArrayList = new ArrayList<>();
+
+                for (int i=0; i<responseJSON.length(); i++){
+                    Food food = new Food(responseJSON.getJSONObject(i));
+                    foodArrayList.add(food);
+                }
+                adapter.setData(foodArrayList);
+            }
+            catch (JSONException e){
+                e.printStackTrace();
+                Toast.makeText(SchermatadiBenvenuto.this, "Qualcosa è andato storto", Toast.LENGTH_LONG).show();
+            }
+        }
     }
         @Override
         public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
